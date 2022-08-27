@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133308",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "reglement",
+  "fields": [
+    {
+      "fieldName": "sommeVerse",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateReglement",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Reglement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "facture",
+      "otherEntityRelationshipName": "reglement",
+      "ownerSide": true,
+      "relationshipName": "facture",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "reglement",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

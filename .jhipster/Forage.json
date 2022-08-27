@@ -1,0 +1,67 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133303",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "forage",
+  "fields": [
+    {
+      "fieldName": "nomSite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateInstalation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "profondeurForage",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "hauteur",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "capacite",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "hauteurSousRadier",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "typeParatonnerre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeReservoir",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capaciteReservoir",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Forage",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "compteur",
+      "otherEntityRelationshipName": "forage",
+      "relationshipName": "compteur",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

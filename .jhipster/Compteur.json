@@ -1,0 +1,67 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133301",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "compteur",
+  "fields": [
+    {
+      "fieldName": "numeroCompteur",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "typeCompteur",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateAbonnement",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "marque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Compteur",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "facture",
+      "otherEntityRelationshipName": "compteur",
+      "relationshipName": "facture",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "compteur",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "abonnement",
+      "otherEntityRelationshipName": "compteur",
+      "relationshipName": "abonnement",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "village",
+      "otherEntityRelationshipName": "compteur",
+      "relationshipName": "village",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "forage",
+      "otherEntityRelationshipName": "compteur",
+      "relationshipName": "forage",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

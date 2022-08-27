@@ -1,0 +1,55 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133306",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "facture",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateDernierReleve",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "ancienIndex",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "nouvelIndex",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateLimitePaiment",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Facture",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "codeBon",
+      "otherEntityName": "bonCoupure",
+      "otherEntityRelationshipName": "facture",
+      "ownerSide": true,
+      "relationshipName": "bonCoupure",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "compteur",
+      "otherEntityRelationshipName": "facture",
+      "relationshipName": "compteur",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

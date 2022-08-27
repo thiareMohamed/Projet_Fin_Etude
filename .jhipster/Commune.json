@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133305",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "commune",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Commune",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "village",
+      "otherEntityRelationshipName": "commune",
+      "relationshipName": "village",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

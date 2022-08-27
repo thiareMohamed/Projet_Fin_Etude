@@ -1,0 +1,31 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133302",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "abonnement",
+  "fields": [
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prixUnitaire",
+      "fieldType": "Double"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Abonnement",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "compteur",
+      "otherEntityRelationshipName": "abonnement",
+      "relationshipName": "compteur",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

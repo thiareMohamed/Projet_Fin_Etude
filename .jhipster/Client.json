@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20220827133300",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "client",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Client",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "compteur",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "compteur",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
