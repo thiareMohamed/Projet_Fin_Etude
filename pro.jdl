@@ -1,0 +1,109 @@
+entity  	Personne {
+	nom String,
+    prenom String,
+    dateNaissance Instant,
+    lieuNaissance String,
+    sexe String,
+    numeroTelephone Integer,
+    numeroCni Integer,
+}
+
+entity Client {
+
+}
+
+entity Compteur {
+	numeroCompteur Long,
+    typeCompteur Integer,
+    dateAbonnement Instant,
+    marque String,
+    statut Boolean
+}
+
+entity Abonnement {
+    libelle String,
+    prixUnitaire Double
+}
+
+entity Forage {
+    nomSite String,
+    longitude Double,
+    latitude Double,
+    dateInstalation Instant,
+    profondeurForage Double,
+    hauteur Double,
+    capacite Double,
+    hauteurSousRadier Double,
+    typeParatonnerre String,
+    typeReservoir String,
+    capaciteReservoir Double
+}
+
+entity Village {
+    nom String,
+    prenomNomChefVillage Double
+}
+
+entity Commune {
+    nom String
+}
+
+entity Facture {
+    code String,
+    dateDernierReleve Instant,
+    ancienIndex Double,
+    nouvelIndex Double,
+    dateLimitePaiment Instant,
+    statut Boolean
+}
+
+entity BonCoupure {
+	codeBon String,
+	raisonCoupure String,
+    taxe Double
+}
+
+entity Reglement {
+	sommeVerse Double,
+    dateReglement Instant
+}
+
+// options
+service all with serviceImpl
+
+// Relation
+relationship OneToOne {
+	Client{personne} to Personne
+}
+
+relationship OneToMany {
+	Client{compteur} to Compteur
+}
+
+relationship OneToMany {
+	Abonnement{compteur} to Compteur
+}
+
+relationship OneToMany {
+	Village{compteur} to Compteur
+}
+
+relationship OneToMany {
+	Commune{village} to Village
+}
+
+relationship OneToMany {
+	Compteur{facture} to Facture
+}
+
+relationship ManyToMany {
+	Facture{bonCoupure(codeBon)} to BonCoupure{facture}
+}
+
+relationship OneToOne {
+	Reglement{facture} to Facture
+}
+
+relationship OneToMany {
+	Forage{compteur} to Compteur
+}

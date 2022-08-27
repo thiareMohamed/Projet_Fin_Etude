@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Compteur.
+    -->
+    <changeSet id="20220827133301-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="compteur"
+                                 constraintName="fk_compteur__client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="client"/>
+
+        <addForeignKeyConstraint baseColumnNames="abonnement_id"
+                                 baseTableName="compteur"
+                                 constraintName="fk_compteur__abonnement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="abonnement"/>
+
+        <addForeignKeyConstraint baseColumnNames="village_id"
+                                 baseTableName="compteur"
+                                 constraintName="fk_compteur__village_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="village"/>
+
+        <addForeignKeyConstraint baseColumnNames="forage_id"
+                                 baseTableName="compteur"
+                                 constraintName="fk_compteur__forage_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="forage"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20220827133300",
-  "dto": "mapstruct",
+  "dto": "no",
   "embedded": false,
   "entityTableName": "client",
   "fields": [],
@@ -11,6 +11,13 @@
   "pagination": "no",
   "readOnly": false,
   "relationships": [
+    {
+      "otherEntityName": "personne",
+      "otherEntityRelationshipName": "client",
+      "ownerSide": true,
+      "relationshipName": "personne",
+      "relationshipType": "one-to-one"
+    },
     {
       "otherEntityName": "compteur",
       "otherEntityRelationshipName": "client",

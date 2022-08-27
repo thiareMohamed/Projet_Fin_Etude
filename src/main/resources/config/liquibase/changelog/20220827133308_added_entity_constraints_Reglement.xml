@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Reglement.
+    -->
+    <changeSet id="20220827133308-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="facture_id"
+                                 baseTableName="reglement"
+                                 constraintName="fk_reglement__facture_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="facture"/>
+    </changeSet>
+</databaseChangeLog>

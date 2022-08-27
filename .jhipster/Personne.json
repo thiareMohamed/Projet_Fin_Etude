@@ -39,21 +39,6 @@
   "name": "Personne",
   "pagination": "no",
   "readOnly": false,
-  "relationships": [
-    {
-      "otherEntityName": "client",
-      "otherEntityRelationshipName": "personne",
-      "ownerSide": true,
-      "relationshipName": "client",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "user",
-      "otherEntityRelationshipName": "personne",
-      "ownerSide": true,
-      "relationshipName": "user",
-      "relationshipType": "one-to-one"
-    }
-  ],
+  "relationships": [],
   "service": "serviceImpl"
 }

@@ -19,6 +19,7 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
+    "entities": ["Personne", "Client", "Reglement", "Compteur", "Abonnement", "Forage", "Village", "Commune", "Facture", "BonCoupure"],
     "entitySuffix": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "7.8.1",

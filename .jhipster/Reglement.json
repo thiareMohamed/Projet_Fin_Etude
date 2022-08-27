@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20220827133308",
-  "dto": "mapstruct",
+  "dto": "no",
   "embedded": false,
   "entityTableName": "reglement",
   "fields": [
@@ -25,13 +25,6 @@
       "otherEntityRelationshipName": "reglement",
       "ownerSide": true,
       "relationshipName": "facture",
-      "relationshipType": "one-to-one"
-    },
-    {
-      "otherEntityName": "user",
-      "otherEntityRelationshipName": "reglement",
-      "ownerSide": true,
-      "relationshipName": "user",
       "relationshipType": "one-to-one"
     }
   ],

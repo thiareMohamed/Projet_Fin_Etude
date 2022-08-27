@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20220827133307",
-  "dto": "mapstruct",
+  "dto": "no",
   "embedded": false,
   "entityTableName": "bon_coupure",
   "fields": [

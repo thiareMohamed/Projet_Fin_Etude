@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20220827133301",
-  "dto": "mapstruct",
+  "dto": "no",
   "embedded": false,
   "entityTableName": "compteur",
   "fields": [

@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20220827133303",
-  "dto": "mapstruct",
+  "dto": "no",
   "embedded": false,
   "entityTableName": "forage",
   "fields": [

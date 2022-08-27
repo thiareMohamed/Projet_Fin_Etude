@@ -20,8 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import sn.giesara.IntegrationTest;
 import sn.giesara.domain.Village;
 import sn.giesara.repository.VillageRepository;
-import sn.giesara.service.dto.VillageDTO;
-import sn.giesara.service.mapper.VillageMapper;
 
 /**
  * Integration tests for the {@link VillageResource} REST controller.
@@ -45,9 +43,6 @@ class VillageResourceIT {
 
     @Autowired
     private VillageRepository villageRepository;
-
-    @Autowired
-    private VillageMapper villageMapper;
 
     @Autowired
     private EntityManager em;
@@ -89,9 +84,8 @@ class VillageResourceIT {
     void createVillage() throws Exception {
         int databaseSizeBeforeCreate = villageRepository.findAll().size();
         // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
         restVillageMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(villageDTO)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(village)))
             .andExpect(status().isCreated());
 
         // Validate the Village in the database
@@ -107,13 +101,12 @@ class VillageResourceIT {
     void createVillageWithExistingId() throws Exception {
         // Create the Village with an existing ID
         village.setId(1L);
-        VillageDTO villageDTO = villageMapper.toDto(village);
 
         int databaseSizeBeforeCreate = villageRepository.findAll().size();
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restVillageMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(villageDTO)))
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(village)))
             .andExpect(status().isBadRequest());
 
         // Validate the Village in the database
@@ -173,13 +166,12 @@ class VillageResourceIT {
         // Disconnect from session so that the updates on updatedVillage are not directly saved in db
         em.detach(updatedVillage);
         updatedVillage.nom(UPDATED_NOM).prenomNomChefVillage(UPDATED_PRENOM_NOM_CHEF_VILLAGE);
-        VillageDTO villageDTO = villageMapper.toDto(updatedVillage);
 
         restVillageMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, villageDTO.getId())
+                put(ENTITY_API_URL_ID, updatedVillage.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(villageDTO))
+                    .content(TestUtil.convertObjectToJsonBytes(updatedVillage))
             )
             .andExpect(status().isOk());
 
@@ -197,15 +189,12 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restVillageMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, villageDTO.getId())
+                put(ENTITY_API_URL_ID, village.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(villageDTO))
+                    .content(TestUtil.convertObjectToJsonBytes(village))
             )
             .andExpect(status().isBadRequest());
 
@@ -220,15 +209,12 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restVillageMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, count.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(villageDTO))
+                    .content(TestUtil.convertObjectToJsonBytes(village))
             )
             .andExpect(status().isBadRequest());
 
@@ -243,12 +229,9 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restVillageMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(villageDTO)))
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(village)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Village in the database
@@ -322,15 +305,12 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restVillageMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, villageDTO.getId())
+                patch(ENTITY_API_URL_ID, village.getId())
                     .contentType("application/merge-patch+json")
-                    .content(TestUtil.convertObjectToJsonBytes(villageDTO))
+                    .content(TestUtil.convertObjectToJsonBytes(village))
             )
             .andExpect(status().isBadRequest());
 
@@ -345,15 +325,12 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restVillageMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, count.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(TestUtil.convertObjectToJsonBytes(villageDTO))
+                    .content(TestUtil.convertObjectToJsonBytes(village))
             )
             .andExpect(status().isBadRequest());
 
@@ -368,14 +345,9 @@ class VillageResourceIT {
         int databaseSizeBeforeUpdate = villageRepository.findAll().size();
         village.setId(count.incrementAndGet());
 
-        // Create the Village
-        VillageDTO villageDTO = villageMapper.toDto(village);
-
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
         restVillageMockMvc
-            .perform(
-                patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(villageDTO))
-            )
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(TestUtil.convertObjectToJsonBytes(village)))
             .andExpect(status().isMethodNotAllowed());
 
         // Validate the Village in the database
