@@ -22,6 +22,7 @@ import sn.giesara.config.Constants;
  */
 @Entity
 @Table(name = "jhi_user")
+@DiscriminatorValue("USER")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends AbstractAuditingEntity implements Serializable {
 
@@ -81,7 +82,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_date")
     private Instant resetDate = null;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "jhi_user_authority",

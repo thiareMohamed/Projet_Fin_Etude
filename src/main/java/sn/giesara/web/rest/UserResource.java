@@ -1,11 +1,14 @@
 package sn.giesara.web.rest;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.Collections;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
+
+import com.github.dockerjava.api.exception.InternalServerErrorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +28,7 @@ import sn.giesara.security.AuthoritiesConstants;
 import sn.giesara.service.MailService;
 import sn.giesara.service.UserService;
 import sn.giesara.service.dto.AdminUserDTO;
+import sn.giesara.service.dto.UserDTO;
 import sn.giesara.web.rest.errors.BadRequestAlertException;
 import sn.giesara.web.rest.errors.EmailAlreadyUsedException;
 import sn.giesara.web.rest.errors.LoginAlreadyUsedException;

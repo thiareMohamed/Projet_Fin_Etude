@@ -14,7 +14,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "client")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Client implements Serializable {
+public class Client extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,16 +23,19 @@ public class Client implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Personne personne;
-
     @OneToMany(mappedBy = "client")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "factures", "client", "abonnement", "village", "forage" }, allowSetters = true)
     private Set<Compteur> compteurs = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+
+    public Client(Long id, Set<Compteur> compteurs) {
+        super();
+        this.id = id;
+        this.compteurs = compteurs;
+    }
 
     public Long getId() {
         return this.id;
@@ -47,18 +50,6 @@ public class Client implements Serializable {
         this.id = id;
     }
 
-    public Personne getPersonne() {
-        return this.personne;
-    }
-
-    public void setPersonne(Personne personne) {
-        this.personne = personne;
-    }
-
-    public Client personne(Personne personne) {
-        this.setPersonne(personne);
-        return this;
-    }
 
     public Set<Compteur> getCompteurs() {
         return this.compteurs;
