@@ -1,10 +1,13 @@
 package sn.giesara.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "client")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Client extends Personne implements Serializable {
+public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -28,13 +31,33 @@ public class Client extends Personne implements Serializable {
     @JsonIgnoreProperties(value = { "factures", "client", "abonnement", "village", "forage" }, allowSetters = true)
     private Set<Compteur> compteurs = new HashSet<>();
 
+    @OneToOne(mappedBy = "client")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Personne personne;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
+
+    public Personne getPersonne() {
+        return personne;
+    }
+
+    public void setPersonne(Personne personne) {
+        this.personne = personne;
+    }
 
     public Client(Long id, Set<Compteur> compteurs) {
         super();
         this.id = id;
         this.compteurs = compteurs;
+    }
+
+    public Client() {
+        super();
+    }
+    public Client(Long id) {
+        super();
+        this.id = id;
     }
 
     public Long getId() {

@@ -33,4 +33,6 @@
     <include file="config/liquibase/changelog/20220827133308_added_entity_constraints_Reglement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+
+    <include file="config/liquibase/changelog/202209010613_added_column_personne_id_on_table_client.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

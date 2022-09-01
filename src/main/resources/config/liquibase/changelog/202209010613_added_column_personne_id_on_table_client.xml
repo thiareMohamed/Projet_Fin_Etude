@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the Column personne_id.
+    -->
+    <changeSet id="202209010613" author="thiareMohamed">
+        <addColumn tableName="client">
+            <column name="personne_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="202209010614" author="thiareMohamed">
+        <addForeignKeyConstraint baseColumnNames="personne_id"
+                                 baseTableName="client"
+                                 constraintName="fk_client_personne_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="personne"/>
+    </changeSet>
+</databaseChangeLog>

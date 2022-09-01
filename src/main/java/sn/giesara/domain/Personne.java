@@ -3,6 +3,9 @@ package sn.giesara.domain;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -42,7 +45,36 @@ public class Personne implements Serializable {
     @Column(name = "numero_cni")
     private Integer numeroCni;
 
+    @OneToOne
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Client client;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public Personne() {
+        super();
+    }
+
+    public Personne(Long id, String nom, String prenom, Instant dateNaissance, String lieuNaissance, String sexe, Integer numeroTelephone, Integer numeroCni, Client client) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.sexe = sexe;
+        this.numeroTelephone = numeroTelephone;
+        this.numeroCni = numeroCni;
+        this.client = client;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     public Long getId() {
         return this.id;
