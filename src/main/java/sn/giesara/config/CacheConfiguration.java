@@ -48,7 +48,6 @@ public class CacheConfiguration {
             createCache(cm, sn.giesara.domain.User.class.getName());
             createCache(cm, sn.giesara.domain.Authority.class.getName());
             createCache(cm, sn.giesara.domain.User.class.getName() + ".authorities");
-            createCache(cm, sn.giesara.domain.Personne.class.getName());
             createCache(cm, sn.giesara.domain.Client.class.getName());
             createCache(cm, sn.giesara.domain.Client.class.getName() + ".compteurs");
             createCache(cm, sn.giesara.domain.Compteur.class.getName());

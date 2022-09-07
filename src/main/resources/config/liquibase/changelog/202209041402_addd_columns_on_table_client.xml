@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <changeSet id="202209041402" author="thiareMohamed">
+        <addColumn tableName="client">
+            <column name="nom" type="string"/>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="prenom" type="string"/>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="date_naissance" type="date"/>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="lieu_naissance" type="string"/>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="sexe" type="string"/>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="numero_telephone" type="int">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </addColumn>
+
+        <addColumn tableName="client">
+            <column name="numero_cni"  type="string(255)">
+                <constraints nullable="false" unique="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

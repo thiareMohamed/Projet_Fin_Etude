@@ -3,6 +3,8 @@ package sn.giesara.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -26,38 +28,105 @@ public class Client implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Column(name = "date_naissance")
+    private Date dateNaissance;
+
+    @Column(name = "lieu_naissance")
+    private String lieuNaissance;
+
+    @Column(name = "sexe")
+    private String sexe;
+
+    @Column(name = "numero_telephone", unique = true, nullable = false  )
+    private Long numeroTelephone;
+
+    @Column(name = "numero_cni", unique = true, nullable = false)
+    private String numeroCni;
+
     @OneToMany(mappedBy = "client")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "factures", "client", "abonnement", "village", "forage" }, allowSetters = true)
     private Set<Compteur> compteurs = new HashSet<>();
 
-    @OneToOne(mappedBy = "client")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Personne personne;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
-
-
-    public Personne getPersonne() {
-        return personne;
-    }
-
-    public void setPersonne(Personne personne) {
-        this.personne = personne;
-    }
-
-    public Client(Long id, Set<Compteur> compteurs) {
-        super();
-        this.id = id;
-        this.compteurs = compteurs;
-    }
 
     public Client() {
         super();
     }
-    public Client(Long id) {
-        super();
+
+
+    public Client(Long id, String nom, String prenom, Date dateNaissance, String lieuNaissance, String sexe, Long numeroTelephone, String numeroCni, Set<Compteur> compteurs) {
         this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.sexe = sexe;
+        this.numeroTelephone = numeroTelephone;
+        this.numeroCni = numeroCni;
+        this.compteurs = compteurs;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public String getLieuNaissance() {
+        return lieuNaissance;
+    }
+
+    public void setLieuNaissance(String lieuNaissance) {
+        this.lieuNaissance = lieuNaissance;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public Long getNumeroTelephone() {
+        return numeroTelephone;
+    }
+
+    public void setNumeroTelephone(Long numeroTelephone) {
+        this.numeroTelephone = numeroTelephone;
+    }
+
+    public String getNumeroCni() {
+        return numeroCni;
+    }
+
+    public void setNumeroCni(String numeroCni) {
+        this.numeroCni = numeroCni;
     }
 
     public Long getId() {

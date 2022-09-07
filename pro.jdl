@@ -1,12 +1,3 @@
-entity  	Personne {
-	nom String,
-    prenom String,
-    dateNaissance Instant,
-    lieuNaissance String,
-    sexe String,
-    numeroTelephone Integer,
-    numeroCni Integer,
-}
 
 entity Client {
 
@@ -72,9 +63,6 @@ entity Reglement {
 service all with serviceImpl
 
 // Relation
-relationship OneToOne {
-	Client{personne} to Personne
-}
 
 relationship OneToMany {
 	Client{compteur} to Compteur

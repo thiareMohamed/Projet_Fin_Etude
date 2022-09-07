@@ -14,9 +14,20 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="personne_id" type="bigint">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_client__personne_id" />
-            </column>
+<!--            <column name="personne_id" type="bigint">-->
+<!--                <constraints nullable="true" unique="true" uniqueConstraintName="ux_client__personne_id" />-->
+<!--            </column>-->
+
+                <column name="nom" type="varchar"/>
+                <column name="prenom" type="varchar"/>
+                <column name="date_naissance" type="date"/>
+                <column name="lieu_naissance" type="varchar"/>
+                <column name="sexe" type="varchar"/>
+                <column name="numero_telephone" type="int"/>
+                <column name="numero_cni" type="int"/>
+
+
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
