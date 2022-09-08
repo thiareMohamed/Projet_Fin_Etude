@@ -68,4 +68,9 @@ public class ClientServiceImpl implements ClientService {
         log.debug("Request to delete Client : {}", id);
         clientRepository.deleteById(id);
     }
+
+    @Override
+    public List<Client> searchClientByName(String name) {
+        return clientRepository.findByNom(name);
+    }
 }

@@ -53,4 +53,6 @@ public interface ClientService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<Client> searchClientByName(String name);
 }

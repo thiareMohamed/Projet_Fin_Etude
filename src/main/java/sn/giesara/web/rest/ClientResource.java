@@ -167,4 +167,10 @@ public class ClientResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/clients/search/{name}")
+    public List<Client> searchClientByName(@PathVariable String name) {
+        log.debug("REST request to search Client by name : {}", name);
+        return clientService.searchClientByName(name);
+    }
 }
