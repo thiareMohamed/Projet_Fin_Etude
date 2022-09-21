@@ -36,4 +36,5 @@
 
 <!--    <include file="config/liquibase/changelog/202209041402_addd_columns_on_table_client.xml" relativeToChangelogFile="false"/>-->
     <include file="config/liquibase/changelog/202209071700_change_type_column_numero_cni_on_table_client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/202209091317_change_type_column_type_compteur_on_table_compteur.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

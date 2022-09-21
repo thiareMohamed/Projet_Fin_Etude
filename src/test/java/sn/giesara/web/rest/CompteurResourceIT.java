@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
@@ -34,11 +35,11 @@ class CompteurResourceIT {
     private static final Long DEFAULT_NUMERO_COMPTEUR = 1L;
     private static final Long UPDATED_NUMERO_COMPTEUR = 2L;
 
-    private static final Integer DEFAULT_TYPE_COMPTEUR = 1;
-    private static final Integer UPDATED_TYPE_COMPTEUR = 2;
+    private static final String DEFAULT_TYPE_COMPTEUR = "CCCCCCCCC";
+    private static final String UPDATED_TYPE_COMPTEUR = "CCCCCCCCC";
 
-    private static final Instant DEFAULT_DATE_ABONNEMENT = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_DATE_ABONNEMENT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final LocalDate DEFAULT_DATE_ABONNEMENT = LocalDate.from(Instant.ofEpochMilli(0L));
+    private static final LocalDate UPDATED_DATE_ABONNEMENT = LocalDate.from(Instant.now().truncatedTo(ChronoUnit.MILLIS));
 
     private static final String DEFAULT_MARQUE = "AAAAAAAAAA";
     private static final String UPDATED_MARQUE = "BBBBBBBBBB";

@@ -3,6 +3,7 @@ package sn.giesara.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -28,10 +29,10 @@ public class Compteur implements Serializable {
     private Long numeroCompteur;
 
     @Column(name = "type_compteur")
-    private Integer typeCompteur;
+    private String typeCompteur;
 
     @Column(name = "date_abonnement")
-    private Instant dateAbonnement;
+    private LocalDate dateAbonnement;
 
     @Column(name = "marque")
     private String marque;
@@ -88,29 +89,29 @@ public class Compteur implements Serializable {
         this.numeroCompteur = numeroCompteur;
     }
 
-    public Integer getTypeCompteur() {
+    public String getTypeCompteur() {
         return this.typeCompteur;
     }
 
-    public Compteur typeCompteur(Integer typeCompteur) {
+    public Compteur typeCompteur(String typeCompteur) {
         this.setTypeCompteur(typeCompteur);
         return this;
     }
 
-    public void setTypeCompteur(Integer typeCompteur) {
+    public void setTypeCompteur(String typeCompteur) {
         this.typeCompteur = typeCompteur;
     }
 
-    public Instant getDateAbonnement() {
+    public LocalDate getDateAbonnement() {
         return this.dateAbonnement;
     }
 
-    public Compteur dateAbonnement(Instant dateAbonnement) {
+    public Compteur dateAbonnement(LocalDate dateAbonnement) {
         this.setDateAbonnement(dateAbonnement);
         return this;
     }
 
-    public void setDateAbonnement(Instant dateAbonnement) {
+    public void setDateAbonnement(LocalDate dateAbonnement) {
         this.dateAbonnement = dateAbonnement;
     }
 

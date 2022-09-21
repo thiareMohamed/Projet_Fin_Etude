@@ -3,6 +3,7 @@ package sn.giesara.service;
 import java.util.List;
 import java.util.Optional;
 import sn.giesara.domain.Compteur;
+import sn.giesara.service.dto.AddCompteurDto;
 
 /**
  * Service Interface for managing {@link Compteur}.
@@ -14,7 +15,7 @@ public interface CompteurService {
      * @param compteur the entity to save.
      * @return the persisted entity.
      */
-    Compteur save(Compteur compteur);
+    Compteur save(AddCompteurDto compteur);
 
     /**
      * Updates a compteur.

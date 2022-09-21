@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import sn.giesara.domain.Compteur;
 import sn.giesara.repository.CompteurRepository;
 import sn.giesara.service.CompteurService;
+import sn.giesara.service.dto.AddCompteurDto;
 import sn.giesara.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -48,7 +49,7 @@ public class CompteurResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/compteurs")
-    public ResponseEntity<Compteur> createCompteur(@RequestBody Compteur compteur) throws URISyntaxException {
+    public ResponseEntity<Compteur> createCompteur(@RequestBody AddCompteurDto compteur) throws URISyntaxException {
         log.debug("REST request to save Compteur : {}", compteur);
         if (compteur.getId() != null) {
             throw new BadRequestAlertException("A new compteur cannot already have an ID", ENTITY_NAME, "idexists");
