@@ -9,4 +9,5 @@ import sn.giesara.domain.Compteur;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface CompteurRepository extends JpaRepository<Compteur, Long> {}
+public interface CompteurRepository extends JpaRepository<Compteur, Long> {
+}

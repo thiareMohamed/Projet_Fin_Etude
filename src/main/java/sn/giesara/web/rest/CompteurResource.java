@@ -170,4 +170,15 @@ public class CompteurResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    @GetMapping("/compteurs/set-status/{id}")
+    public ResponseEntity<Compteur> setStatus(@PathVariable Long id) {
+        log.debug("REST request to set status Compteur : {}", id);
+        Optional<Compteur> compteur = compteurService.findOne(id);
+        if (compteur.isPresent()) {
+            compteur.get().setStatut(!compteur.get().getStatut());
+            compteurRepository.save(compteur.get());
+        }
+        return ResponseUtil.wrapOrNotFound(compteur);
+    }
 }
