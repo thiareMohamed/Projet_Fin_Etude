@@ -46,11 +46,11 @@ public class Compteur implements Serializable {
     private Set<Facture> factures = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "personne", "compteurs" }, allowSetters = true)
+//    @JsonIgnoreProperties(value = { "personne", "compteurs" }, allowSetters = true)
     private Client client;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "compteurs" }, allowSetters = true)
+//    @JsonIgnoreProperties(value = { "compteurs" }, allowSetters = true)
     private Abonnement abonnement;
 
     @ManyToOne

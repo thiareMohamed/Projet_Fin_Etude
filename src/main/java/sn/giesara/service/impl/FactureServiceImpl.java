@@ -1,14 +1,20 @@
 package sn.giesara.service.impl;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sn.giesara.domain.Compteur;
 import sn.giesara.domain.Facture;
+import sn.giesara.repository.CompteurRepository;
 import sn.giesara.repository.FactureRepository;
 import sn.giesara.service.FactureService;
 
@@ -20,17 +26,45 @@ import sn.giesara.service.FactureService;
 public class FactureServiceImpl implements FactureService {
 
     private final Logger log = LoggerFactory.getLogger(FactureServiceImpl.class);
+    private final RandomStrGenerator randomStrGenerator;
+    private final CompteurRepository compteurRepository;
 
     private final FactureRepository factureRepository;
 
-    public FactureServiceImpl(FactureRepository factureRepository) {
+    public FactureServiceImpl(FactureRepository factureRepository,
+                              RandomStrGenerator randomStrGenerator,
+                              CompteurRepository compteurRepository) {
         this.factureRepository = factureRepository;
+        this.randomStrGenerator = randomStrGenerator;
+        this.compteurRepository = compteurRepository;
     }
 
     @Override
     public Facture save(Facture facture) {
         log.debug("Request to save Facture : {}", facture);
-        return factureRepository.save(facture);
+        Facture result = new Facture();
+        Optional<Compteur> compteur = compteurRepository.findById(Long.valueOf(facture.getCode()));
+        Optional<Facture> derniereFacture = factureRepository.findByCompteurOrderByDateDernierReleveDesc(compteur.get());
+        if (!derniereFacture.isPresent()){
+            result.setAncienIndex(0.0);
+        }else {
+            result.setAncienIndex(derniereFacture.get().getNouvelIndex());
+        }
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 1);
+        result.setDateDernierReleve(cal.getTime().toInstant());
+
+        result.setNouvelIndex(facture.getNouvelIndex());
+        result.setStatut(false);
+        result.setCompteur(compteur.get());
+
+        result.setCode(randomStrGenerator.main());
+        result.setDateDernierReleve(new Date().toInstant());
+
+
+        return factureRepository.save(result);
     }
 
     @Override

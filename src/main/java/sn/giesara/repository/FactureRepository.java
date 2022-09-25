@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import sn.giesara.domain.Compteur;
 import sn.giesara.domain.Facture;
 
 /**
@@ -25,4 +26,6 @@ public interface FactureRepository extends FactureRepositoryWithBagRelationships
     default Page<Facture> findAllWithEagerRelationships(Pageable pageable) {
         return this.fetchBagRelationships(this.findAll(pageable));
     }
+
+    Optional<Facture> findByCompteurOrderByDateDernierReleveDesc(Compteur compteur);
 }

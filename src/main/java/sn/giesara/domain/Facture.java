@@ -53,7 +53,7 @@ public class Facture implements Serializable {
     private Set<BonCoupure> bonCoupures = new HashSet<>();
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "factures", "client", "abonnement", "village", "forage" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "factures", "village", "forage" }, allowSetters = true)
     private Compteur compteur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
