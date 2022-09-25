@@ -48,23 +48,6 @@ public class CacheConfiguration {
             createCache(cm, sn.giesara.domain.User.class.getName());
             createCache(cm, sn.giesara.domain.Authority.class.getName());
             createCache(cm, sn.giesara.domain.User.class.getName() + ".authorities");
-            createCache(cm, sn.giesara.domain.Client.class.getName());
-            createCache(cm, sn.giesara.domain.Client.class.getName() + ".compteurs");
-            createCache(cm, sn.giesara.domain.Compteur.class.getName());
-            createCache(cm, sn.giesara.domain.Compteur.class.getName() + ".factures");
-            createCache(cm, sn.giesara.domain.Abonnement.class.getName());
-            createCache(cm, sn.giesara.domain.Abonnement.class.getName() + ".compteurs");
-            createCache(cm, sn.giesara.domain.Forage.class.getName());
-            createCache(cm, sn.giesara.domain.Forage.class.getName() + ".compteurs");
-            createCache(cm, sn.giesara.domain.Village.class.getName());
-            createCache(cm, sn.giesara.domain.Village.class.getName() + ".compteurs");
-            createCache(cm, sn.giesara.domain.Commune.class.getName());
-            createCache(cm, sn.giesara.domain.Commune.class.getName() + ".villages");
-            createCache(cm, sn.giesara.domain.Facture.class.getName());
-            createCache(cm, sn.giesara.domain.Facture.class.getName() + ".bonCoupures");
-            createCache(cm, sn.giesara.domain.BonCoupure.class.getName());
-            createCache(cm, sn.giesara.domain.BonCoupure.class.getName() + ".factures");
-            createCache(cm, sn.giesara.domain.Reglement.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

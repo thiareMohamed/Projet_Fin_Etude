@@ -22,6 +22,7 @@
     "ci:e2e:teardown": "npm run ci:e2e:teardown:docker",
     "ci:e2e:teardown:docker": "npm run docker:db:down --if-present && npm run docker:others:down && docker ps -a",
     "docker:app:up": "docker-compose -f src/main/docker/app.yml up -d",
+    "docker:db:await": "echo \"Waiting for MySQL to start\" && wait-on -t 180000 tcp:3306 && sleep 20 && echo \"MySQL started\"",
     "docker:db:down": "docker-compose -f src/main/docker/mysql.yml down -v",
     "docker:db:up": "docker-compose -f src/main/docker/mysql.yml up -d",
     "docker:others:await": "",
@@ -38,8 +39,8 @@
     "java:war": "./mvnw -ntp verify -DskipTests --batch-mode -Pwar",
     "java:war:dev": "npm run java:war -- -Pdev,webapp",
     "java:war:prod": "npm run java:war -- -Pprod",
-    "prettier:check": "prettier --check \"{,src/**/}*.{md,json,yml,html,java}\"",
-    "prettier:format": "prettier --write \"{,src/**/}*.{md,json,yml,html,java}\""
+    "prettier:check": "prettier --check \"{,src/**/,.blueprint/**/}*.{md,json,yml,html,java}\"",
+    "prettier:format": "prettier --write \"{,src/**/,.blueprint/**/}*.{md,json,yml,html,java}\""
   },
   "config": {
     "backend_port": "8080",
@@ -47,13 +48,13 @@
     "packaging": "jar"
   },
   "devDependencies": {
-    "generator-jhipster": "7.8.1",
-    "prettier": "2.6.2",
-    "prettier-plugin-java": "1.6.1",
-    "prettier-plugin-packagejson": "2.2.17"
+    "generator-jhipster": "7.9.3",
+    "prettier": "2.7.1",
+    "prettier-plugin-java": "1.6.2",
+    "prettier-plugin-packagejson": "2.2.18"
   },
   "engines": {
-    "node": ">=16.14.0"
+    "node": ">=16.17.0"
   },
   "cacheDirectories": [
     "node_modules"

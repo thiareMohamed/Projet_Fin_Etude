@@ -1,5 +1,6 @@
 package sn.giesara.service.dto;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -11,7 +12,9 @@ import sn.giesara.domain.User;
 /**
  * A DTO representing a user, with his authorities.
  */
-public class AdminUserDTO {
+public class AdminUserDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
@@ -33,7 +36,7 @@ public class AdminUserDTO {
     @Size(max = 256)
     private String imageUrl;
 
-    private boolean activated = true;
+    private boolean activated = false;
 
     @Size(min = 2, max = 10)
     private String langKey;

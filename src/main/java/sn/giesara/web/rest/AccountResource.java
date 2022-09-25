@@ -1,16 +1,12 @@
 package sn.giesara.web.rest;
 
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
-import com.github.dockerjava.api.exception.InternalServerErrorException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sn.giesara.domain.User;
 import sn.giesara.repository.UserRepository;
@@ -19,7 +15,6 @@ import sn.giesara.service.MailService;
 import sn.giesara.service.UserService;
 import sn.giesara.service.dto.AdminUserDTO;
 import sn.giesara.service.dto.PasswordChangeDTO;
-import sn.giesara.service.dto.UserDTO;
 import sn.giesara.web.rest.errors.*;
 import sn.giesara.web.rest.vm.KeyAndPasswordVM;
 import sn.giesara.web.rest.vm.ManagedUserVM;
@@ -195,21 +190,5 @@ public class AccountResource {
             password.length() < ManagedUserVM.PASSWORD_MIN_LENGTH ||
             password.length() > ManagedUserVM.PASSWORD_MAX_LENGTH
         );
-    }
-
-
-    /**
-     * {@code GET /current-user} : get the current User.
-     *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the current User.
-     * @throws UnsupportedEncodingException if there is an error while decoding the header.
-     */
-    @GetMapping("/current-user")
-    public UserDTO getCurrentUser() throws UnsupportedEncodingException {
-        Optional<User> user = userService.getUserWithAuthorities();
-        if (!user.isPresent()) {
-            throw new InternalServerErrorException("User could not be found");
-        }
-        return new UserDTO(user.get());
     }
 }

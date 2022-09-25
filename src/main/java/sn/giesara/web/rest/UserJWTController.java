@@ -19,7 +19,6 @@ import sn.giesara.web.rest.vm.LoginVM;
  */
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
 public class UserJWTController {
 
     private final TokenProvider tokenProvider;
