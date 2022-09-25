@@ -80,18 +80,18 @@ class AccountResourceIT {
 
     @Test
     void testGetExistingAccount() throws Exception {
-        Set<String> authorities = new HashSet<>();
-        authorities.add(AuthoritiesConstants.ADMIN);
-
-        AdminUserDTO user = new AdminUserDTO();
-        user.setLogin(TEST_USER_LOGIN);
-        user.setFirstName("john");
-        user.setLastName("doe");
-        user.setEmail("john.doe@jhipster.com");
-        user.setImageUrl("http://placehold.it/50x50");
-        user.setLangKey("en");
-        user.setAuthorities(authorities);
-        userService.createUser(user);
+//        Set<String> authorities = new HashSet<>();
+//        authorities.add(AuthoritiesConstants.ADMIN);
+//
+//        AdminUserDTO user = new AdminUserDTO();
+//        user.setLogin(TEST_USER_LOGIN);
+//        user.setFirstName("john");
+//        user.setLastName("doe");
+//        user.setEmail("john.doe@jhipster.com");
+//        user.setImageUrl("http://placehold.it/50x50");
+//        user.setLangKey("en");
+//        user.setAuthorities(authorities);
+//        userService.createUser(user);
 
         restAccountMockMvc
             .perform(get("/api/account").accept(MediaType.APPLICATION_JSON))
