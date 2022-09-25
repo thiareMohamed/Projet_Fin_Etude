@@ -77,9 +77,25 @@ public class CompteurServiceImpl implements CompteurService {
     }
 
     @Override
-    public Compteur update(Compteur compteur) {
+    public Compteur update(AddCompteurDto compteur) {
         log.debug("Request to save Compteur : {}", compteur);
-        return compteurRepository.save(compteur);
+        Compteur compteur1 = new Compteur();
+        compteur1.setId(compteur.getId());
+        compteur1.setTypeCompteur(compteur.getTypeCompteur());
+        compteur1.setMarque(compteur.getMarque());
+        compteur1.setDateAbonnement(compteur.getDateAbonnement());
+        compteur1.setStatut(compteur.isStatus());
+
+        Village village = villageRepository.findById(compteur.getIdVillage()).orElse(null);
+        Client client = clientRepository.findById(compteur.getIdClient()).orElse(null);
+        Abonnement abonnement = abonnementRepository.findById(compteur.getIdAbonnement()).orElse(null);
+        Forage forage = forageRepository.findById(compteur.getIdForage()).orElse(null);
+
+        compteur1.setVillage(village);
+        compteur1.setClient(client);
+        compteur1.setAbonnement(abonnement);
+        compteur1.setForage(forage);
+        return compteurRepository.save(compteur1);
     }
 
     @Override

@@ -23,7 +23,7 @@ public interface CompteurService {
      * @param compteur the entity to update.
      * @return the persisted entity.
      */
-    Compteur update(Compteur compteur);
+    Compteur update(AddCompteurDto compteur);
 
     /**
      * Partially updates a compteur.

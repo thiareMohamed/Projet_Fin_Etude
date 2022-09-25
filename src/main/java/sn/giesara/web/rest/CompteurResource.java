@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sn.giesara.domain.Compteur;
+import sn.giesara.domain.*;
 import sn.giesara.repository.CompteurRepository;
 import sn.giesara.service.CompteurService;
 import sn.giesara.service.dto.AddCompteurDto;
@@ -74,7 +74,7 @@ public class CompteurResource {
     @PutMapping("/compteurs/{id}")
     public ResponseEntity<Compteur> updateCompteur(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody Compteur compteur
+        @RequestBody AddCompteurDto compteur
     ) throws URISyntaxException {
         log.debug("REST request to update Compteur : {}, {}", id, compteur);
         if (compteur.getId() == null) {
