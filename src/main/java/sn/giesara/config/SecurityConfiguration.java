@@ -78,8 +78,6 @@ public class SecurityConfiguration {
             .antMatchers("/management/info").permitAll()
             .antMatchers("/management/prometheus").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/_search/meetings/**").permitAll()
-            .antMatchers("/api/_search/meetings").permitAll()
         .and()
             .httpBasic()
         .and()
