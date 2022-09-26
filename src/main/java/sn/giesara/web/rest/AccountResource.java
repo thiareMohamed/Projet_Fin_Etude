@@ -24,6 +24,7 @@ import sn.giesara.web.rest.vm.ManagedUserVM;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class AccountResource {
 
     private static class AccountResourceException extends RuntimeException {

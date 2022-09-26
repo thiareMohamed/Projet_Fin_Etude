@@ -22,6 +22,7 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class ForageResource {
 
     private final Logger log = LoggerFactory.getLogger(ForageResource.class);

@@ -58,6 +58,7 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api/admin")
+@CrossOrigin(origins = "*")
 public class UserResource {
 
     private static final List<String> ALLOWED_ORDERED_PROPERTIES = Collections.unmodifiableList(

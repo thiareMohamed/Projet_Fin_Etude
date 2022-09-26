@@ -23,6 +23,7 @@ import tech.jhipster.web.util.ResponseUtil;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class CompteurResource {
 
     private final Logger log = LoggerFactory.getLogger(CompteurResource.class);
